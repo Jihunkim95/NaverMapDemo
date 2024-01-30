@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		53C793F184FB542831C9B582 /* Pods_NaverMapDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FFB657CA27B4DEBADD02245 /* Pods_NaverMapDemo.framework */; };
+		5C9C72792B68E536004FAF1B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C72782B68E536004FAF1B /* MapView.swift */; };
 		5CE454A82B68D99800874BCE /* NaverMapDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */; };
 		5CE454AA2B68D99800874BCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A92B68D99800874BCE /* ContentView.swift */; };
 		5CE454AC2B68D99900874BCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE454AB2B68D99900874BCE /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		03C8745A698E8E5AD59FD336 /* Pods-NaverMapDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMapDemo.debug.xcconfig"; path = "Target Support Files/Pods-NaverMapDemo/Pods-NaverMapDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		5C9C72782B68E536004FAF1B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5CE454A42B68D99800874BCE /* NaverMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapDemoApp.swift; sourceTree = "<group>"; };
 		5CE454A92B68D99800874BCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				5CE454B52B68DB5E00874BCE /* Info.plist */,
 				5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */,
 				5CE454A92B68D99800874BCE /* ContentView.swift */,
+				5C9C72782B68E536004FAF1B /* MapView.swift */,
 				5CE454AB2B68D99900874BCE /* Assets.xcassets */,
 				5CE454AD2B68D99900874BCE /* Preview Content */,
 			);
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CE454AA2B68D99800874BCE /* ContentView.swift in Sources */,
+				5C9C72792B68E536004FAF1B /* MapView.swift in Sources */,
 				5CE454A82B68D99800874BCE /* NaverMapDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
