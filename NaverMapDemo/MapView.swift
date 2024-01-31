@@ -39,7 +39,10 @@ struct UIMapView: UIViewRepresentable {
         // 내 위치 활성화 버튼
         naverMapView.showLocationButton = true
         
-
+        // 초기 카메라 위치 줌
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: coord.1, lng: coord.0), zoomTo: 15)
+        
+        naverMapView.mapView.moveCamera(cameraUpdate)
         
         return naverMapView
     }
@@ -54,27 +57,27 @@ struct UIMapView: UIViewRepresentable {
     }
 
 }
-
-// 위치 정보를 관리 클래스
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private let locationManager = CLLocationManager()
-    @Published var location: CLLocationCoordinate2D?
-    var onAuthorizationGranted: (() -> Void)?
-
-    override init() {
-        super.init()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse || status == .authorizedAlways {
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last?.coordinate
-        onAuthorizationGranted?()
-    }
-}
+//
+//// 위치 정보를 관리 클래스
+//class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+//    private let locationManager = CLLocationManager()
+//    @Published var location: CLLocationCoordinate2D?
+//    var onAuthorizationGranted: (() -> Void)?
+//
+//    override init() {
+//        super.init()
+//        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        if status == .authorizedWhenInUse || status == .authorizedAlways {
+//            locationManager.startUpdatingLocation()
+//        }
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        location = locations.last?.coordinate
+//        onAuthorizationGranted?()
+//    }
+//}
