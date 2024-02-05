@@ -15,13 +15,17 @@ struct MapMarkerView: View {
     @ObservedObject var locationManager = LocationManager()
     @State var touchCoord: NMGLatLng? = nil
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
-    @State var rocation: String? = ""
+    @State var location: String? = ""
+    @ObservedObject var viewModel: PostingViewModel
     
+    //이전화면으로 돌아가기
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
 
-                    UIMapMarkerView(coord: coord, touchCoord: $touchCoord, rocation: $rocation)
+                UIMapMarkerView(coord: $coord, touchCoord: $touchCoord, rocation: $location)
                         .edgesIgnoringSafeArea(.all)
                 
                     MapMakerExplainView()
@@ -29,12 +33,20 @@ struct MapMarkerView: View {
                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.15)//상단으로
                         .edgesIgnoringSafeArea(.all)
                         .navigationBarBackButtonHidden(true) // 뒤로 가기 버튼 숨기기
-                
-                    Text(rocation ?? "")
-                    
-                    // 확인 버튼
+                VStack{
+                    Text(location ?? "")
+                Text("\(coord.0), \(coord.1)")
+                }
+
                     Button(action: {
-                        let apl = 11
+                        if let location = location {
+                            viewModel.updateLocationName(with: location)
+                        }
+                        viewModel.updateLocation(with: coord)
+                        print("선택한 위치: \(viewModel.noticeBoard.noticeLocationName)")
+                        print("위도 경도: \(viewModel.noticeBoard.noticeLocation)")
+                        
+                        dismiss()
                     }) {
                         Text("선택완료")
                             .fontWeight(.bold)
@@ -66,7 +78,7 @@ struct MapMarkerView: View {
 }
 
 struct UIMapMarkerView: UIViewRepresentable {
-    var coord: (Double, Double)
+    @Binding var coord: (Double, Double)
     @Binding var touchCoord: NMGLatLng?
     @Binding var rocation: String?
 
@@ -147,7 +159,6 @@ struct UIMapMarkerView: UIViewRepresentable {
                 
                 // JSON 데이터를 디코딩 ㄱㄱ
                 do {
-                    
                     let decodedData = try JSONDecoder().decode(NaverReverseGeocoding.self, from: data)
                     // 주소 Custom
                     guard let result = decodedData.results?.first else
@@ -158,10 +169,12 @@ struct UIMapMarkerView: UIViewRepresentable {
                     let gil = result.land.name
                     let landNumber = result.land.number1
                     let landValue = result.land.addition0.value
-
 //                    dump( result )
+                    
+                    //도로명 및 좌표값
                     DispatchQueue.main.async {
                         self.parent.rocation = [seeDo, seeGunGu, dong, gil, landNumber, landValue].joined(separator: " ")
+                        self.parent.coord = (position.lat, position.lng)
                     }
                 } catch {
                     print("Decoding error: \(error)")
@@ -173,96 +186,3 @@ struct UIMapMarkerView: UIViewRepresentable {
 }
 
 
-// 위치 정보허용 관리 클래스
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private let locationManager = CLLocationManager()
-    @Published var location: CLLocationCoordinate2D?
-    var onAuthorizationGranted: (() -> Void)?
-
-    override init() {
-        super.init()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-    }
-
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse || status == .authorizedAlways {
-            locationManager.startUpdatingLocation()
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last?.coordinate
-        onAuthorizationGranted?()
-    }
-}
-
-struct NaverReverseGeocoding: Codable {
-    let status: Status
-    let results: [Result]?
-}
-
-
-// 상태 정보
-struct Status: Codable {
-    let code: Int
-    let name: String
-    let message: String
-}
-
-// 결과 리스트
-struct Result: Codable {
-    let name: String
-    let code: Code
-    let region: Region
-    let land: Land
-}
-
-// 코드 정보
-struct Code: Codable {
-    let id: String
-    let type: String
-    let mappingId: String
-}
-
-// 지역 정보
-struct Region: Codable {
-    let area0, area1, area2, area3, area4: Area
-}
-
-// 구체적인 지역 단위
-struct Area: Codable {
-    let name: String
-    let coords: Coords
-    let alias: String?
-    
-    struct Coords: Codable {
-        let center: Center
-    }
-    
-    struct Center: Codable {
-        let crs: String
-        let x, y: Double
-    }
-}
-
-// 토지 정보
-struct Land: Codable {
-    let type, number1, number2, name: String
-    let addition0, addition1, addition2, addition3, addition4: Addition
-    let coords: LandCoords
-    
-    struct Addition: Codable {
-        let type: String
-        let value: String
-    }
-    
-    struct LandCoords: Codable {
-        let center: Center
-    }
-    
-    struct Center: Codable {
-        let crs: String
-        let x, y: Double
-    }
-}
