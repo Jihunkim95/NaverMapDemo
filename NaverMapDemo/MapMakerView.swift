@@ -14,11 +14,13 @@ struct MapMarkerView: View {
     @ObservedObject var locationManager = LocationManager()
     @State var touchCoord: NMGLatLng? = nil
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
+    @State var rocation: String? = ""
     
     var body: some View {
         ZStack {
-            UIMapMarkerView(coord: coord, touchCoord: $touchCoord)
+            UIMapMarkerView(coord: coord, touchCoord: $touchCoord, rocation: $rocation)
                 .edgesIgnoringSafeArea(.all)
+            Text(rocation ?? "")
         }
         .onAppear {
             locationManager.onAuthorizationGranted = updateMapToCurrentLocation
@@ -36,6 +38,7 @@ struct MapMarkerView: View {
 struct UIMapMarkerView: UIViewRepresentable {
     var coord: (Double, Double)
     @Binding var touchCoord: NMGLatLng?
+    @Binding var rocation: String?
 
     // View 생성
     func makeUIView(context: Context) -> NMFNaverMapView {
@@ -85,14 +88,19 @@ struct UIMapMarkerView: UIViewRepresentable {
         func updateMarkerPosition(_ position: NMGLatLng, on mapView: NMFMapView) {
             // 기존 마커 제거
             marker?.mapView = nil
-
             // 새로운 마커 생성 및 추가
             let newMarker = NMFMarker(position: position)
             newMarker.mapView = mapView
             marker = newMarker
-            
+            // 마커 도로명 주소 불러오기
+            fetchAddressForPosition(position)
+        }
+        private func fetchAddressForPosition(_ position: NMGLatLng) {
+
+            // Reverse Geocoding 요청 및 처리 로직
+            // URL, API 키, Request 구성 생략 (보안 및 가독성을 위해)
             print("마커 좌표 : \(position.lat),\(position.lng)")
-            
+
             guard let url = URL(string: "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?coords=\(position.lng),\(position.lat)&orders=roadaddr&output=json") else { return }
             
             var request = URLRequest(url: url)
@@ -110,18 +118,25 @@ struct UIMapMarkerView: UIViewRepresentable {
                 do {
                     
                     let decodedData = try JSONDecoder().decode(NaverReverseGeocoding.self, from: data)
-                    print( decodedData )
+                    // 주소 Custom
+                    guard let result = decodedData.results?.first else
+                    { return print(" decodedData 결과값 없음 ") }
+                    let seeDo = result.region.area1.name
+                    let seeGunGu = result.region.area2.name
+                    let dong = result.region.area3.name
+                    let gil = result.land.name
+                    let landNumber = result.land.number1
+                    let landValue = result.land.addition0.value
 
-                    // 메인 스레드에서 UI 업데이트
+//                    dump( result )
                     DispatchQueue.main.async {
-                        
+                        self.parent.rocation = [seeDo, seeGunGu, dong, gil, landNumber, landValue].joined(separator: " ")
                     }
                 } catch {
                     print("Decoding error: \(error)")
                 }
             }
             task.resume()
-            
         }
     }
 }
