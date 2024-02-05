@@ -1,0 +1,62 @@
+//
+//  MapMakerAlertView.swift
+//  NaverMapDemo
+//
+//  Created by 김지훈 on 2024/02/05.
+//
+
+import SwiftUI
+
+struct MapMakerExplainView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack {
+            // 닫기 버튼
+            HStack {
+                Button(action: {
+                    //현재 View 닫기
+                    dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 16))
+                        .foregroundStyle(.black)
+                        .padding(.leading,14)
+                }
+                Spacer()
+            }
+            Spacer()
+            Text("교환하고 싶은 장소를 선택해주세요.")
+                .frame(maxWidth: .infinity, alignment: .leading)              .font(.system(size: 24))
+                .padding(.leading,14)
+                .padding(.top,14)
+                .padding(.bottom,14)
+                
+            Text("누구나 찾기 쉬운 장소를 선택하는 것이 좋아요.")
+                .frame(maxWidth: .infinity, alignment: .leading)              .font(.system(size: 14))
+                .padding(.leading,14)
+                .padding(.bottom,14)
+            Spacer()
+        }
+        .background(Color.white) // 배경색을 흰색으로 설정합니다.
+    }
+}
+
+struct ChangePostingView: View {
+    @State private var navigateToMapMarkerView = false
+
+    var body: some View {
+        
+        NavigationView {
+            VStack {
+                Button("지도 마커 뷰로 이동") {
+                    navigateToMapMarkerView = true
+                }
+                NavigationLink("", destination: MapMarkerView(), isActive: $navigateToMapMarkerView)
+            }
+            .navigationTitle("Change Posting View")
+
+        }
+    }
+}
+
