@@ -11,7 +11,7 @@ import SwiftUI
 struct NaverMapDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            MapMarkerView()
+            ChangePostingView()
         }
     }
 }

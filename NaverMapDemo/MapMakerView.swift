@@ -11,20 +11,50 @@ import CoreLocation
 
 
 struct MapMarkerView: View {
+
     @ObservedObject var locationManager = LocationManager()
     @State var touchCoord: NMGLatLng? = nil
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
     @State var rocation: String? = ""
     
     var body: some View {
-        ZStack {
-            UIMapMarkerView(coord: coord, touchCoord: $touchCoord, rocation: $rocation)
-                .edgesIgnoringSafeArea(.all)
-            Text(rocation ?? "")
+        GeometryReader { geometry in
+            ZStack {
+
+                    UIMapMarkerView(coord: coord, touchCoord: $touchCoord, rocation: $rocation)
+                        .edgesIgnoringSafeArea(.all)
+                
+                    MapMakerExplainView()
+                        .frame(height: geometry.size.height * 0.15)
+                        .position(x: geometry.size.width / 2, y: geometry.size.height * 0.15)//상단으로
+                        .edgesIgnoringSafeArea(.all)
+                        .navigationBarBackButtonHidden(true) // 뒤로 가기 버튼 숨기기
+                
+                    Text(rocation ?? "")
+                    
+                    // 확인 버튼
+                    Button(action: {
+                        let apl = 11
+                    }) {
+                        Text("선택완료")
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color(hex:"59AAE0"))
+                            .cornerRadius(10)
+
+                    }
+                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.08) // 버튼의 크기를 설정합니다.
+                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.95) // 하단에 위치
+                    .padding(.bottom, geometry.safeAreaInsets.bottom) // 하단 세이프 에어리어만큼 패딩 추가
+
+            }
+            .onAppear {
+                locationManager.onAuthorizationGranted = updateMapToCurrentLocation
+            }
         }
-        .onAppear {
-            locationManager.onAuthorizationGranted = updateMapToCurrentLocation
-        }
+
     }
     
     private func updateMapToCurrentLocation() {
