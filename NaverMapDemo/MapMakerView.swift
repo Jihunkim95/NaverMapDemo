@@ -45,8 +45,8 @@ struct MapMarkerView: View {
                             .cornerRadius(10)
 
                     }
-                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.08) // 버튼의 크기를 설정합니다.
-                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.95) // 하단에 위치
+                    .frame(width: geometry.size.width * 0.5, height: geometry.size.height * 0.08) // 버튼의 크기를 설정합니다.
+                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.91) // 하단에 위치
                     .padding(.bottom, geometry.safeAreaInsets.bottom) // 하단 세이프 에어리어만큼 패딩 추가
 
             }
@@ -87,13 +87,15 @@ struct UIMapMarkerView: UIViewRepresentable {
     
     // View 변경시 호출
     func updateUIView(_ uiView: NMFNaverMapView, context: Context) {
-        let newMyCoord = NMGLatLng(lat: coord.1, lng: coord.0)
-        let cameraUpdate = NMFCameraUpdate(scrollTo: newMyCoord)
-        cameraUpdate.animation = .fly
-        cameraUpdate.animationDuration = 1
         
-        uiView.mapView.moveCamera(cameraUpdate)
-        
+            let newMyCoord = NMGLatLng(lat: coord.1, lng: coord.0)
+            let cameraUpdate = NMFCameraUpdate(scrollTo: newMyCoord)
+            cameraUpdate.animation = .fly
+            cameraUpdate.animationDuration = 1
+            // 내 위치로 카메라 자동 업데이트, 시점 변경시 계속 업데이트되서 주석처리
+//            uiView.mapView.moveCamera(cameraUpdate)
+
+        // Maker좌표 변경
         if let coord = touchCoord {
             context.coordinator.updateMarkerPosition(coord, on: uiView.mapView)
         }
@@ -129,8 +131,7 @@ struct UIMapMarkerView: UIViewRepresentable {
 
             // Reverse Geocoding 요청 및 처리 로직
             // URL, API 키, Request 구성 생략 (보안 및 가독성을 위해)
-            print("마커 좌표 : \(position.lat),\(position.lng)")
-
+//            print("마커 좌표 : \(position.lat),\(position.lng)")
             guard let url = URL(string: "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?coords=\(position.lng),\(position.lat)&orders=roadaddr&output=json") else { return }
             
             var request = URLRequest(url: url)
