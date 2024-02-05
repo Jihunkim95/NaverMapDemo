@@ -42,21 +42,3 @@ struct MapMakerExplainView: View {
     }
 }
 
-struct ChangePostingView: View {
-    @State private var navigateToMapMarkerView = false
-
-    var body: some View {
-        
-        NavigationView {
-            VStack {
-                Button("지도 마커 뷰로 이동") {
-                    navigateToMapMarkerView = true
-                }
-                NavigationLink("", destination: MapMarkerView(), isActive: $navigateToMapMarkerView)
-            }
-            .navigationTitle("Change Posting View")
-
-        }
-    }
-}
-
