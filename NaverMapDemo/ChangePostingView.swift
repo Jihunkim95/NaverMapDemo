@@ -17,6 +17,9 @@ struct ChangePostingView: View {
     @State private var showImagePicker = false
     @State private var sourceType = 0
     
+    @ObservedObject var locationManager = LocationManager()
+    @State var myCoord:(Double,Double) = (77,77)
+    
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
@@ -68,9 +71,9 @@ struct ChangePostingView: View {
                         .bold()
                     
                     //EmptyView에 지훈님이 만든 네이버 맵 화면
-                    NavigationLink(destination: MapMarkerView(viewModel: viewModel)) {
+                    NavigationLink(destination: MapMarkerView(myCoord: $myCoord, viewModel: viewModel)) {
                         HStack {
-                            Text("\(viewModel.noticeBoard.noticeLocationName.first ?? "교환장소 선택")")
+                            Text("\(viewModel.noticeBoard.noticeLocationName )")
                                 .foregroundColor(.black)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -103,6 +106,9 @@ struct ChangePostingView: View {
                     }
                     .padding(.bottom, 20)
                 }
+                .onAppear {
+                    locationManager.onAuthorizationGranted = updateMapToCurrentLocation
+                }
             }
             .padding()
             .navigationTitle("바꿔요")
@@ -120,27 +126,11 @@ struct ChangePostingView: View {
             }
         }
     }
+    private func updateMapToCurrentLocation() {
+        if let currentLocation = locationManager.location {
+            myCoord = (currentLocation.longitude, currentLocation.latitude)
+        }
+    }
 }
 
-#Preview {
-    ChangePostingView()
-}
 
-//struct ChangePostingView: View {
-//    @State private var navigateToMapMarkerView = false
-//
-//    var body: some View {
-//
-//        NavigationView {
-//            VStack {
-//                Button("지도 마커 뷰로 이동") {
-//                    navigateToMapMarkerView = true
-//                }
-//                NavigationLink("", destination: MapMarkerView(), isActive: $navigateToMapMarkerView)
-//            }
-//            .navigationTitle("Change Posting View")
-//
-//        }
-//    }
-//}
-//

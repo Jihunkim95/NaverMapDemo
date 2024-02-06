@@ -12,10 +12,7 @@ import CoreLocation
 
 struct MapMarkerView: View {
 
-    @ObservedObject var locationManager = LocationManager()
-//    @State var touchCoord: NMGLatLng? = nil
-    @State var myCoord: (Double, Double) = (126.9784147, 37.5666805)
-    @State var location: String? = ""
+    @Binding var myCoord: (Double, Double)
     @ObservedObject var viewModel: PostingViewModel
     
     //이전화면으로 돌아가기
@@ -25,7 +22,7 @@ struct MapMarkerView: View {
         GeometryReader { geometry in
             ZStack {
 
-                UIMapMarkerView(coord: $myCoord, touchCoord: $viewModel.touchCoord, rocation: $location)
+                UIMapMarkerView(myCoord: $myCoord, markerCoord: $viewModel.markerCoord, location: $viewModel.noticeBoard.noticeLocationName)
                         .edgesIgnoringSafeArea(.all)
                 
                     MapMakerExplainView()
@@ -34,15 +31,12 @@ struct MapMarkerView: View {
                         .edgesIgnoringSafeArea(.all)
                         .navigationBarBackButtonHidden(true) // 뒤로 가기 버튼 숨기기
                 VStack{
-                    Text(location ?? "")
-                    Text("\(viewModel.touchCoord?.lat ?? 11),\(viewModel.touchCoord?.lng ?? 11)")
+                    Text(viewModel.noticeBoard.noticeLocationName)
+                    Text("\(viewModel.markerCoord?.lat ?? 11),\(viewModel.markerCoord?.lng ?? 11)")
                 }
 
                     Button(action: {
-                        if let location = location {
-                            viewModel.updateLocationName(with: location)
-                        }
-                        viewModel.updateLocation(with: myCoord)
+                        
                         print("선택한 위치: \(viewModel.noticeBoard.noticeLocationName)")
                         print("위도 경도: \(viewModel.noticeBoard.noticeLocation)")
                         
@@ -62,25 +56,18 @@ struct MapMarkerView: View {
                     .padding(.bottom, geometry.safeAreaInsets.bottom) // 하단 세이프 에어리어만큼 패딩 추가
 
             }
-            .onAppear {
-                locationManager.onAuthorizationGranted = updateMapToCurrentLocation
-            }
+
         }
 
     }
     
-    private func updateMapToCurrentLocation() {
-        if let currentLocation = locationManager.location {
-            myCoord = (currentLocation.longitude, currentLocation.latitude)
-//            print(coord)
-        }
-    }
+
 }
 
 struct UIMapMarkerView: UIViewRepresentable {
-    @Binding var coord: (Double, Double)
-    @Binding var touchCoord: NMGLatLng?
-    @Binding var rocation: String?
+    @Binding var myCoord: (Double, Double)
+    @Binding var markerCoord: NMGLatLng?
+    @Binding var location: String
 
     // View 생성
     func makeUIView(context: Context) -> NMFNaverMapView {
@@ -93,10 +80,11 @@ struct UIMapMarkerView: UIViewRepresentable {
         // 초기 카메라 위치 줌
         let cameraUpdate: NMFCameraUpdate
         
-        if let cameraCoord = touchCoord {
+        // 마커가 업
+        if let cameraCoord = markerCoord {
             cameraUpdate = NMFCameraUpdate(scrollTo: cameraCoord, zoomTo: 15)
         }else {
-            cameraUpdate = NMFCameraUpdate(scrollTo:NMGLatLng(lat: coord.1, lng: coord.0), zoomTo: 15)
+            cameraUpdate = NMFCameraUpdate(scrollTo:NMGLatLng(lat: myCoord.1, lng: myCoord.0), zoomTo: 15)
         }
         
         mapView.mapView.moveCamera(cameraUpdate)
@@ -106,15 +94,14 @@ struct UIMapMarkerView: UIViewRepresentable {
     // View 변경시 호출
     func updateUIView(_ uiView: NMFNaverMapView, context: Context) {
         
-            let newMyCoord = NMGLatLng(lat: coord.1, lng: coord.0)
+            let newMyCoord = NMGLatLng(lat: myCoord.1, lng: myCoord.0)
             let cameraUpdate = NMFCameraUpdate(scrollTo: newMyCoord)
             cameraUpdate.animation = .fly
             cameraUpdate.animationDuration = 1
-            // 내 위치로 카메라 자동 업데이트, 시점 변경시 계속 업데이트되서 주석처리
-//            uiView.mapView.moveCamera(cameraUpdate)
+        //uiView.mapView.moveCamera(cameraUpdate)
 
         // Maker좌표 변경
-        if let coord = touchCoord {
+        if let coord = markerCoord {
             context.coordinator.updateMarkerPosition(coord, on: uiView.mapView)
         }
     }
@@ -132,7 +119,7 @@ struct UIMapMarkerView: UIViewRepresentable {
         }
 
         func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
-            parent.touchCoord = latlng
+            parent.markerCoord = latlng
         }
 
         func updateMarkerPosition(_ position: NMGLatLng, on mapView: NMFMapView) {
@@ -178,8 +165,8 @@ struct UIMapMarkerView: UIViewRepresentable {
                     
                     //도로명 및 좌표값 API
                     DispatchQueue.main.async {
-                        self.parent.rocation = [seeDo, seeGunGu, dong, gil, landNumber, landValue].joined(separator: " ")
-                        self.parent.touchCoord = NMGLatLng(lat: position.lat, lng: position.lng)
+                        self.parent.location = [seeDo, seeGunGu, dong, gil, landNumber, landValue].joined(separator: " ")
+                        self.parent.markerCoord = NMGLatLng(lat: position.lat, lng: position.lng)
                     }
                 } catch {
                     print("Decoding error: \(error)")
