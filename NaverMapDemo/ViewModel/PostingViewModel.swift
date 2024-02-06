@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import NMapsMap
 
 
 class PostingViewModel: ObservableObject {
     @Published var noticeBoard: NoticeBoard
+    
+    @Published var touchCoord: NMGLatLng?
     
     init() {
         noticeBoard = NoticeBoard(userId: "", noticeBoardTitle: "", noticeBoardDetail: "", noticeImageLink: [], noticeLocation: [],noticeLocationName: [], isChange: false, state: 0, date: Date())

@@ -13,8 +13,8 @@ import CoreLocation
 struct MapMarkerView: View {
 
     @ObservedObject var locationManager = LocationManager()
-    @State var touchCoord: NMGLatLng? = nil
-    @State var coord: (Double, Double) = (126.9784147, 37.5666805)
+//    @State var touchCoord: NMGLatLng? = nil
+    @State var myCoord: (Double, Double) = (126.9784147, 37.5666805)
     @State var location: String? = ""
     @ObservedObject var viewModel: PostingViewModel
     
@@ -25,7 +25,7 @@ struct MapMarkerView: View {
         GeometryReader { geometry in
             ZStack {
 
-                UIMapMarkerView(coord: $coord, touchCoord: $touchCoord, rocation: $location)
+                UIMapMarkerView(coord: $myCoord, touchCoord: $viewModel.touchCoord, rocation: $location)
                         .edgesIgnoringSafeArea(.all)
                 
                     MapMakerExplainView()
@@ -35,14 +35,14 @@ struct MapMarkerView: View {
                         .navigationBarBackButtonHidden(true) // 뒤로 가기 버튼 숨기기
                 VStack{
                     Text(location ?? "")
-                Text("\(coord.0), \(coord.1)")
+                    Text("\(viewModel.touchCoord?.lat ?? 11),\(viewModel.touchCoord?.lng ?? 11)")
                 }
 
                     Button(action: {
                         if let location = location {
                             viewModel.updateLocationName(with: location)
                         }
-                        viewModel.updateLocation(with: coord)
+                        viewModel.updateLocation(with: myCoord)
                         print("선택한 위치: \(viewModel.noticeBoard.noticeLocationName)")
                         print("위도 경도: \(viewModel.noticeBoard.noticeLocation)")
                         
@@ -71,7 +71,7 @@ struct MapMarkerView: View {
     
     private func updateMapToCurrentLocation() {
         if let currentLocation = locationManager.location {
-            coord = (currentLocation.longitude, currentLocation.latitude)
+            myCoord = (currentLocation.longitude, currentLocation.latitude)
 //            print(coord)
         }
     }
@@ -91,7 +91,13 @@ struct UIMapMarkerView: UIViewRepresentable {
         // 내 위치 활성화 버튼
         mapView.showLocationButton = true
         // 초기 카메라 위치 줌
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: coord.1, lng: coord.0), zoomTo: 15)
+        let cameraUpdate: NMFCameraUpdate
+        
+        if let cameraCoord = touchCoord {
+            cameraUpdate = NMFCameraUpdate(scrollTo: cameraCoord, zoomTo: 15)
+        }else {
+            cameraUpdate = NMFCameraUpdate(scrollTo:NMGLatLng(lat: coord.1, lng: coord.0), zoomTo: 15)
+        }
         
         mapView.mapView.moveCamera(cameraUpdate)
         return mapView
@@ -143,7 +149,6 @@ struct UIMapMarkerView: UIViewRepresentable {
 
             // Reverse Geocoding 요청 및 처리 로직
             // URL, API 키, Request 구성 생략 (보안 및 가독성을 위해)
-//            print("마커 좌표 : \(position.lat),\(position.lng)")
             guard let url = URL(string: "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?coords=\(position.lng),\(position.lat)&orders=roadaddr&output=json") else { return }
             
             var request = URLRequest(url: url)
@@ -171,10 +176,10 @@ struct UIMapMarkerView: UIViewRepresentable {
                     let landValue = result.land.addition0.value
 //                    dump( result )
                     
-                    //도로명 및 좌표값
+                    //도로명 및 좌표값 API
                     DispatchQueue.main.async {
                         self.parent.rocation = [seeDo, seeGunGu, dong, gil, landNumber, landValue].joined(separator: " ")
-                        self.parent.coord = (position.lat, position.lng)
+                        self.parent.touchCoord = NMGLatLng(lat: position.lat, lng: position.lng)
                     }
                 } catch {
                     print("Decoding error: \(error)")
