@@ -21,6 +21,7 @@
 		5CE454AA2B68D99800874BCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A92B68D99800874BCE /* ContentView.swift */; };
 		5CE454AC2B68D99900874BCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE454AB2B68D99900874BCE /* Assets.xcassets */; };
 		5CE454AF2B68D99900874BCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE454AE2B68D99900874BCE /* Preview Assets.xcassets */; };
+		5CFA2EE22B71FB2E00917A55 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		5CE454AB2B68D99900874BCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CE454AE2B68D99900874BCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CE454B52B68DB5E00874BCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		8FFB657CA27B4DEBADD02245 /* Pods_NaverMapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaverMapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB02354730B98373E2AE070 /* Pods-NaverMapDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMapDemo.release.xcconfig"; path = "Target Support Files/Pods-NaverMapDemo/Pods-NaverMapDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				5CE454B52B68DB5E00874BCE /* Info.plist */,
+				5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */,
 				5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */,
 				5CE454A92B68D99800874BCE /* ContentView.swift */,
 				5C9C72782B68E536004FAF1B /* MapView.swift */,
@@ -214,6 +217,7 @@
 			files = (
 				5CE454AF2B68D99900874BCE /* Preview Assets.xcassets in Resources */,
 				5CE454AC2B68D99900874BCE /* Assets.xcassets in Resources */,
+				5CFA2EE22B71FB2E00917A55 /* Secrets.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +289,7 @@
 /* Begin XCBuildConfiguration section */
 		5CE454B02B68D99900874BCE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -348,6 +353,7 @@
 		};
 		5CE454B12B68D99900874BCE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

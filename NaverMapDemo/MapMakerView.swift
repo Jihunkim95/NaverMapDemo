@@ -135,13 +135,17 @@ struct UIMapMarkerView: UIViewRepresentable {
         private func fetchAddressForPosition(_ position: NMGLatLng) {
 
             // Reverse Geocoding 요청 및 처리 로직
-            // URL, API 키, Request 구성 생략 (보안 및 가독성을 위해)
-            guard let url = URL(string: "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?coords=\(position.lng),\(position.lat)&orders=roadaddr&output=json") else { return }
-            
+            guard let apiKeyID = Bundle.main.object(forInfoDictionaryKey: "NaverAPIKeyID") as? String,
+                  let apiKeySecret = Bundle.main.object(forInfoDictionaryKey: "NaverAPISecretKey") as? String,
+                  let url = URL(string: "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?coords=\(position.lng),\(position.lat)&orders=roadaddr&output=json") else {
+                print("Invalid API Key or URL")
+                return
+            }
+
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
-            request.addValue("z5abdsw588", forHTTPHeaderField: "X-NCP-APIGW-API-KEY-ID")
-            request.addValue("WRgNOFM7oMJTgyj3vYryrOG95LAPsqzswafXff6a", forHTTPHeaderField: "X-NCP-APIGW-API-KEY")
+            request.addValue(apiKeyID, forHTTPHeaderField: "X-NCP-APIGW-API-KEY-ID")
+            request.addValue(apiKeySecret, forHTTPHeaderField: "X-NCP-APIGW-API-KEY")
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data, error == nil else {
