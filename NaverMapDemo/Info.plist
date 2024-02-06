@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NaverAPISecretKey</key>
+	<key>naverKey</key>
 	<string>${naverKey}</string>
-	<key>NaverAPIKeyID</key>
+	<key>naverKeyId</key>
 	<string>${naverKeyId}</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>사용자의 위치를 받습니다.</string>

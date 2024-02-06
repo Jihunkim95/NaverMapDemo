@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MapMakerExplainView: View {
+struct ExchangeHopeExplainView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {

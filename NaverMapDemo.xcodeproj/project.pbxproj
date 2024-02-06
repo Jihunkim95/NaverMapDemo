@@ -8,33 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		53C793F184FB542831C9B582 /* Pods_NaverMapDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FFB657CA27B4DEBADD02245 /* Pods_NaverMapDemo.framework */; };
-		5C6ADD652B70B99C00001263 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6ADD642B70B99C00001263 /* LocationManager.swift */; };
+		5C6ADD652B70B99C00001263 /* NaverLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6ADD642B70B99C00001263 /* NaverLocationManager.swift */; };
 		5C6ADD682B70B9EB00001263 /* NaverReverseGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6ADD672B70B9EB00001263 /* NaverReverseGeocoding.swift */; };
 		5C6ADD6A2B70BB8800001263 /* NoticeBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6ADD692B70BB8800001263 /* NoticeBoard.swift */; };
 		5C6ADD6D2B70BBE200001263 /* PostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6ADD6C2B70BBE200001263 /* PostingViewModel.swift */; };
 		5C6ADD6F2B70BC7400001263 /* ChangePostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6ADD6E2B70BC7400001263 /* ChangePostingView.swift */; };
-		5C7EA7392B707F9400E5C0B0 /* MapMakerExplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EA7382B707F9400E5C0B0 /* MapMakerExplainView.swift */; };
+		5C7EA7392B707F9400E5C0B0 /* ExchangeHopeExplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */; };
 		5C7EA73D2B70A77C00E5C0B0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EA73C2B70A77C00E5C0B0 /* Color.swift */; };
 		5C9C72792B68E536004FAF1B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C72782B68E536004FAF1B /* MapView.swift */; };
-		5C9C727B2B6A2EEF004FAF1B /* MapMakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C727A2B6A2EEF004FAF1B /* MapMakerView.swift */; };
+		5C9C727B2B6A2EEF004FAF1B /* ExchangeHopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */; };
 		5CE454A82B68D99800874BCE /* NaverMapDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */; };
 		5CE454AA2B68D99800874BCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A92B68D99800874BCE /* ContentView.swift */; };
 		5CE454AC2B68D99900874BCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE454AB2B68D99900874BCE /* Assets.xcassets */; };
 		5CE454AF2B68D99900874BCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE454AE2B68D99900874BCE /* Preview Assets.xcassets */; };
 		5CFA2EE22B71FB2E00917A55 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */; };
+		5CFA2EE82B72074A00917A55 /* NaverLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA2EE72B72074A00917A55 /* NaverLocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03C8745A698E8E5AD59FD336 /* Pods-NaverMapDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMapDemo.debug.xcconfig"; path = "Target Support Files/Pods-NaverMapDemo/Pods-NaverMapDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		5C6ADD642B70B99C00001263 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5C6ADD642B70B99C00001263 /* NaverLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLocationManager.swift; sourceTree = "<group>"; };
 		5C6ADD672B70B9EB00001263 /* NaverReverseGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverReverseGeocoding.swift; sourceTree = "<group>"; };
 		5C6ADD692B70BB8800001263 /* NoticeBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBoard.swift; sourceTree = "<group>"; };
 		5C6ADD6C2B70BBE200001263 /* PostingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewModel.swift; sourceTree = "<group>"; };
 		5C6ADD6E2B70BC7400001263 /* ChangePostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePostingView.swift; sourceTree = "<group>"; };
-		5C7EA7382B707F9400E5C0B0 /* MapMakerExplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMakerExplainView.swift; sourceTree = "<group>"; };
+		5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHopeExplainView.swift; sourceTree = "<group>"; };
 		5C7EA73C2B70A77C00E5C0B0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5C9C72782B68E536004FAF1B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		5C9C727A2B6A2EEF004FAF1B /* MapMakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMakerView.swift; sourceTree = "<group>"; };
+		5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHopeView.swift; sourceTree = "<group>"; };
 		5CE454A42B68D99800874BCE /* NaverMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapDemoApp.swift; sourceTree = "<group>"; };
 		5CE454A92B68D99800874BCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		5CE454AE2B68D99900874BCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CE454B52B68DB5E00874BCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		5CFA2EE72B72074A00917A55 /* NaverLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLocationService.swift; sourceTree = "<group>"; };
 		8FFB657CA27B4DEBADD02245 /* Pods_NaverMapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaverMapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB02354730B98373E2AE070 /* Pods-NaverMapDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaverMapDemo.release.xcconfig"; path = "Target Support Files/Pods-NaverMapDemo/Pods-NaverMapDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,7 +63,7 @@
 		5C6ADD622B70B97E00001263 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				5C6ADD642B70B99C00001263 /* LocationManager.swift */,
+				5C6ADD642B70B99C00001263 /* NaverLocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -117,11 +119,12 @@
 				5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */,
 				5CE454A92B68D99800874BCE /* ContentView.swift */,
 				5C9C72782B68E536004FAF1B /* MapView.swift */,
-				5C9C727A2B6A2EEF004FAF1B /* MapMakerView.swift */,
+				5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */,
+				5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */,
+				5C6ADD622B70B97E00001263 /* Manager */,
+				5CFA2EE62B72073A00917A55 /* Service */,
 				5C6ADD6B2B70BBCE00001263 /* ViewModel */,
 				5C6ADD662B70B9D000001263 /* Model */,
-				5C6ADD622B70B97E00001263 /* Manager */,
-				5C7EA7382B707F9400E5C0B0 /* MapMakerExplainView.swift */,
 				5C6ADD6E2B70BC7400001263 /* ChangePostingView.swift */,
 				5C7EA73E2B70AD2B00E5C0B0 /* Extension */,
 				5CE454AB2B68D99900874BCE /* Assets.xcassets */,
@@ -136,6 +139,14 @@
 				5CE454AE2B68D99900874BCE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5CFA2EE62B72073A00917A55 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5CFA2EE72B72074A00917A55 /* NaverLocationService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		CBD24D6CCB1B2F2C6B55F072 /* Frameworks */ = {
@@ -275,11 +286,12 @@
 				5C9C72792B68E536004FAF1B /* MapView.swift in Sources */,
 				5C6ADD6F2B70BC7400001263 /* ChangePostingView.swift in Sources */,
 				5C6ADD6D2B70BBE200001263 /* PostingViewModel.swift in Sources */,
-				5C9C727B2B6A2EEF004FAF1B /* MapMakerView.swift in Sources */,
-				5C6ADD652B70B99C00001263 /* LocationManager.swift in Sources */,
-				5C7EA7392B707F9400E5C0B0 /* MapMakerExplainView.swift in Sources */,
+				5C9C727B2B6A2EEF004FAF1B /* ExchangeHopeView.swift in Sources */,
+				5C6ADD652B70B99C00001263 /* NaverLocationManager.swift in Sources */,
+				5C7EA7392B707F9400E5C0B0 /* ExchangeHopeExplainView.swift in Sources */,
 				5C6ADD682B70B9EB00001263 /* NaverReverseGeocoding.swift in Sources */,
 				5CE454A82B68D99800874BCE /* NaverMapDemoApp.swift in Sources */,
+				5CFA2EE82B72074A00917A55 /* NaverLocationService.swift in Sources */,
 				5C7EA73D2B70A77C00E5C0B0 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 // NaverMap API 위치 정보허용 관리 클래스
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+class NaverLocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     @Published var location: CLLocationCoordinate2D?
     var onAuthorizationGranted: (() -> Void)?

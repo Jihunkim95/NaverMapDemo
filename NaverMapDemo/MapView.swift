@@ -10,7 +10,7 @@ import NMapsMap
 import CoreLocation
 
 struct MapView: View {
-    @ObservedObject var locationManager = LocationManager()
+    @ObservedObject var locationManager = NaverLocationManager()
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
 
     var body: some View {

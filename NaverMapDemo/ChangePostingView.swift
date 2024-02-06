@@ -17,7 +17,7 @@ struct ChangePostingView: View {
     @State private var showImagePicker = false
     @State private var sourceType = 0
     
-    @ObservedObject var locationManager = LocationManager()
+    @ObservedObject var locationManager = NaverLocationManager()
     @State var myCoord:(Double,Double) = (77,77)
     
     var body: some View {
@@ -71,7 +71,7 @@ struct ChangePostingView: View {
                         .bold()
                     
                     //EmptyView에 지훈님이 만든 네이버 맵 화면
-                    NavigationLink(destination: MapMarkerView(myCoord: $myCoord, viewModel: viewModel)) {
+                    NavigationLink(destination: ExchangeHopeView(myCoord: $myCoord, viewModel: viewModel)) {
                         HStack {
                             Text("\(viewModel.noticeBoard.noticeLocationName )")
                                 .foregroundColor(.black)
