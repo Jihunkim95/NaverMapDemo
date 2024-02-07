@@ -30,8 +30,12 @@ struct ExchangeHopeView: View {
                     .navigationBarBackButtonHidden(true) // 뒤로 가기 버튼 숨기기
                 
                 Button(action: {
+                    if let lat = viewModel.markerCoord?.lat, let lng = viewModel.markerCoord?.lng {
+                        viewModel.updateNoticeLocation(lat: lat, lng: lng)
+                    }
+                    viewModel.updateNoticeLocationName(name: viewModel.noticeBoard.noticeLocationName)
                     dismiss()
-                    print(myCoord)
+                    
                 }) {
                     Text("선택완료")
                         .fontWeight(.bold)

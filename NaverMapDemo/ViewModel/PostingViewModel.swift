@@ -17,4 +17,20 @@ class PostingViewModel: ObservableObject {
     init() {
         noticeBoard = NoticeBoard(userId: "", noticeBoardTitle: "", noticeBoardDetail: "", noticeImageLink: [], noticeLocation: [], noticeLocationName: "교환장소 선택", isChange: false, state: 0, date: Date())
     }
+    
+    // 교환 장소 위도,경도 Update
+    func updateNoticeLocation(lat: Double?, lng: Double?){
+        guard let lat = lat, let lng = lng else {return}
+        
+        if noticeBoard.noticeLocation.count >= 2 {
+            noticeBoard.noticeLocation[0] = lat
+            noticeBoard.noticeLocation[1] = lng
+        }else{
+            noticeBoard.noticeLocation = [lat, lng]
+        }
+    }
+    // 교환 장소명 Update
+    func updateNoticeLocationName(name: String) {
+        noticeBoard.noticeLocationName = name
+    }
 }

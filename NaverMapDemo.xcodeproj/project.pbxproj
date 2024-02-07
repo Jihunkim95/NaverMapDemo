@@ -15,6 +15,7 @@
 		5C6ADD6F2B70BC7400001263 /* ChangePostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6ADD6E2B70BC7400001263 /* ChangePostingView.swift */; };
 		5C7EA7392B707F9400E5C0B0 /* ExchangeHopeExplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */; };
 		5C7EA73D2B70A77C00E5C0B0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EA73C2B70A77C00E5C0B0 /* Color.swift */; };
+		5C8C0DE52B73633B002963F1 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C0DE42B73633B002963F1 /* ReportView.swift */; };
 		5C9C72792B68E536004FAF1B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C72782B68E536004FAF1B /* MapView.swift */; };
 		5C9C727B2B6A2EEF004FAF1B /* ExchangeHopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */; };
 		5CE454A82B68D99800874BCE /* NaverMapDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */; };
@@ -34,6 +35,7 @@
 		5C6ADD6E2B70BC7400001263 /* ChangePostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePostingView.swift; sourceTree = "<group>"; };
 		5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHopeExplainView.swift; sourceTree = "<group>"; };
 		5C7EA73C2B70A77C00E5C0B0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5C8C0DE42B73633B002963F1 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		5C9C72782B68E536004FAF1B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHopeView.swift; sourceTree = "<group>"; };
 		5CE454A42B68D99800874BCE /* NaverMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		5C8C0DE32B736333002963F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C8C0DE42B73633B002963F1 /* ReportView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5CE4549B2B68D99700874BCE = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 				5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */,
 				5CE454A92B68D99800874BCE /* ContentView.swift */,
 				5C9C72782B68E536004FAF1B /* MapView.swift */,
+				5C8C0DE32B736333002963F1 /* View */,
 				5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */,
 				5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */,
 				5C6ADD622B70B97E00001263 /* Manager */,
@@ -288,6 +299,7 @@
 				5C6ADD6D2B70BBE200001263 /* PostingViewModel.swift in Sources */,
 				5C9C727B2B6A2EEF004FAF1B /* ExchangeHopeView.swift in Sources */,
 				5C6ADD652B70B99C00001263 /* NaverLocationManager.swift in Sources */,
+				5C8C0DE52B73633B002963F1 /* ReportView.swift in Sources */,
 				5C7EA7392B707F9400E5C0B0 /* ExchangeHopeExplainView.swift in Sources */,
 				5C6ADD682B70B9EB00001263 /* NaverReverseGeocoding.swift in Sources */,
 				5CE454A82B68D99800874BCE /* NaverMapDemoApp.swift in Sources */,
