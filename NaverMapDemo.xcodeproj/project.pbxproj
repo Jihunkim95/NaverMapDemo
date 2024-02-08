@@ -16,6 +16,7 @@
 		5C7EA7392B707F9400E5C0B0 /* ExchangeHopeExplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */; };
 		5C7EA73D2B70A77C00E5C0B0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EA73C2B70A77C00E5C0B0 /* Color.swift */; };
 		5C8C0DE52B73633B002963F1 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C0DE42B73633B002963F1 /* ReportView.swift */; };
+		5C8C0DE82B749918002963F1 /* ReportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C0DE72B749918002963F1 /* ReportDetailView.swift */; };
 		5C9C72792B68E536004FAF1B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C72782B68E536004FAF1B /* MapView.swift */; };
 		5C9C727B2B6A2EEF004FAF1B /* ExchangeHopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */; };
 		5CE454A82B68D99800874BCE /* NaverMapDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */; };
@@ -35,6 +36,7 @@
 		5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHopeExplainView.swift; sourceTree = "<group>"; };
 		5C7EA73C2B70A77C00E5C0B0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5C8C0DE42B73633B002963F1 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		5C8C0DE72B749918002963F1 /* ReportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailView.swift; sourceTree = "<group>"; };
 		5C9C72782B68E536004FAF1B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHopeView.swift; sourceTree = "<group>"; };
 		5CE454A42B68D99800874BCE /* NaverMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				5C8C0DE42B73633B002963F1 /* ReportView.swift */,
+				5C8C0DE72B749918002963F1 /* ReportDetailView.swift */,
+				5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */,
+				5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,8 +132,6 @@
 				5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */,
 				5C9C72782B68E536004FAF1B /* MapView.swift */,
 				5C8C0DE32B736333002963F1 /* View */,
-				5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */,
-				5C7EA7382B707F9400E5C0B0 /* ExchangeHopeExplainView.swift */,
 				5C6ADD622B70B97E00001263 /* Manager */,
 				5CFA2EE62B72073A00917A55 /* Service */,
 				5C6ADD6B2B70BBCE00001263 /* ViewModel */,
@@ -294,6 +297,7 @@
 				5C6ADD6F2B70BC7400001263 /* ChangePostingView.swift in Sources */,
 				5C6ADD6D2B70BBE200001263 /* PostingViewModel.swift in Sources */,
 				5C9C727B2B6A2EEF004FAF1B /* ExchangeHopeView.swift in Sources */,
+				5C8C0DE82B749918002963F1 /* ReportDetailView.swift in Sources */,
 				5C6ADD652B70B99C00001263 /* NaverLocationManager.swift in Sources */,
 				5C8C0DE52B73633B002963F1 /* ReportView.swift in Sources */,
 				5C7EA7392B707F9400E5C0B0 /* ExchangeHopeExplainView.swift in Sources */,
@@ -360,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -418,7 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
