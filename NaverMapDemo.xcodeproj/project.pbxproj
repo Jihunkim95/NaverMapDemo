@@ -19,7 +19,6 @@
 		5C9C72792B68E536004FAF1B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C72782B68E536004FAF1B /* MapView.swift */; };
 		5C9C727B2B6A2EEF004FAF1B /* ExchangeHopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */; };
 		5CE454A82B68D99800874BCE /* NaverMapDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */; };
-		5CE454AA2B68D99800874BCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE454A92B68D99800874BCE /* ContentView.swift */; };
 		5CE454AC2B68D99900874BCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE454AB2B68D99900874BCE /* Assets.xcassets */; };
 		5CE454AF2B68D99900874BCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE454AE2B68D99900874BCE /* Preview Assets.xcassets */; };
 		5CFA2EE22B71FB2E00917A55 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */; };
@@ -40,7 +39,6 @@
 		5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeHopeView.swift; sourceTree = "<group>"; };
 		5CE454A42B68D99800874BCE /* NaverMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaverMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapDemoApp.swift; sourceTree = "<group>"; };
-		5CE454A92B68D99800874BCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5CE454AB2B68D99900874BCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CE454AE2B68D99900874BCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CE454B52B68DB5E00874BCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				5CE454B52B68DB5E00874BCE /* Info.plist */,
 				5CFA2EE12B71FB2E00917A55 /* Secrets.xcconfig */,
 				5CE454A72B68D99800874BCE /* NaverMapDemoApp.swift */,
-				5CE454A92B68D99800874BCE /* ContentView.swift */,
 				5C9C72782B68E536004FAF1B /* MapView.swift */,
 				5C8C0DE32B736333002963F1 /* View */,
 				5C9C727A2B6A2EEF004FAF1B /* ExchangeHopeView.swift */,
@@ -293,7 +290,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C6ADD6A2B70BB8800001263 /* NoticeBoard.swift in Sources */,
-				5CE454AA2B68D99800874BCE /* ContentView.swift in Sources */,
 				5C9C72792B68E536004FAF1B /* MapView.swift in Sources */,
 				5C6ADD6F2B70BC7400001263 /* ChangePostingView.swift in Sources */,
 				5C6ADD6D2B70BBE200001263 /* PostingViewModel.swift in Sources */,
