@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ReportDetailView: View {
+    
+    @ObservedObject var reportVM: ReportViewModel
+
     @Environment(\.dismiss) private var dismiss
     @State private var text: String = ""
     @State private var showAlert: Bool = false
@@ -16,11 +19,11 @@ struct ReportDetailView: View {
     var body: some View {
         GeometryReader{ geometry in
             NavigationStack{
-                ZStack{
+                ZStack(alignment: .topLeading){
                         // TextField 스타일링 예시
                         TextField("신고하는 이유를 추가 설명해 주세요.", text: $text, axis: .vertical)
                         .padding(.horizontal, 10) // 여기에 원하는 만큼의 패딩 값을 추가
-                            .frame(width: geometry.size.width * 0.88, height: geometry.size.height * 0.5) // 버튼의 크기를 설정합니다.
+                            .frame(width: geometry.size.width * 0.88, height: geometry.size.height * 0.5)
                             .cornerRadius(5) // 모서리 둥글게
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
@@ -30,6 +33,8 @@ struct ReportDetailView: View {
                             .padding(.top, geometry.safeAreaInsets.top) //
                     
                     Button {
+                        reportVM.report.additionalComments = text
+                        reportVM.saveReportToFirestore(report: reportVM.report)
                         showAlert = true
                     } label: {
                         Text("신고하기")

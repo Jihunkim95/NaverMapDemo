@@ -11,6 +11,7 @@ import SwiftUI
 struct ReportView: View {
 
     @State private var isTitleHidden: Bool = false
+    @StateObject var reportVM: ReportViewModel
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -33,21 +34,17 @@ struct ReportView: View {
                 
                 Divider()
                 
-                NavigationLink(destination: ReportDetailView(title: "허위/거짓 정보를 포함하고 있어요.")){
-                    ReportCellView(contents: "허위/거짓 정보를 포함하고 있어요.").onDisappear(){
-                        isTitleHidden = true
-
+                ForEach(Report.ReportReason.allCases, id: \.self){ reason in
+                    NavigationLink(destination: ReportDetailView(reportVM: reportVM, title: reason.rawValue)){
+                        ReportCellView(contents: reason.rawValue)
+                            .onDisappear(){
+                                reportVM.updateReportReason(reason: reason)
+                                reportVM.report.targetType = .post //임시로 게시물로 해놓음
+                            }
                     }
+                    
                 }
-                NavigationLink(destination: ReportDetailView(title: "욕설/비방/혐오 표현이 사용되었어요.")){
-                    ReportCellView(contents: "욕설/비방/혐오 표현이 사용되었어요.")
-                }
-                NavigationLink(destination: ReportDetailView(title: "선정적인 내용을 포함하고 있어요.")){
-                    ReportCellView(contents: "선정적인 내용을 포함하고 있어요.")
-                }
-                NavigationLink(destination: ReportDetailView(title: "기타")){
-                    ReportCellView(contents: "기타")
-                }
+
                 Spacer()
             }
         }.navigationBarTitle("신고하기", displayMode: .inline)
@@ -60,7 +57,7 @@ struct TestView1: View {
     var body: some View {
         NavigationStack{
             VStack{
-                NavigationLink(destination: ReportView()){
+                NavigationLink(destination: ReportView(reportVM: ReportViewModel())){
                     VStack{
                         Text("신고하기")
                     }
